@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-@foreach($adds as $add)
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,12 +57,14 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($adds as $add)
             <tr>
                 <th scope="row">{{$add->created_at}}</th>
                 <td>{{$add->title}}</td>
                 <td>{{$add->compagny_name}}</td>
                 <td><a href="/user/adds/{{$add->id}}">Infos</a></td>
             </tr>
+            @endforeach
         </tbody>
     </table>
             </div>
@@ -71,7 +72,6 @@
     </div>
 </body>
 </html>
-@endforeach
 @endsection
 
 
