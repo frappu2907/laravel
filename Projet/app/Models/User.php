@@ -19,7 +19,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'nickname',
+        'mobile',
         'password',
+        // add the new attributes and then do php artisan migrate:fresh (resete the db) and php artisan migrate
     ];
 
     /**
@@ -27,7 +30,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+    protected $hidden = [ 
         'password',
         'remember_token',
     ];
