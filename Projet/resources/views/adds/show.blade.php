@@ -33,6 +33,7 @@
                         <h5 class="title_dashboard">Dashboard</h5>
                     </div>
                     <ul class="listDashboard">
+                        <li><a href="/user">Home</a></li>
                         <li><a href="/user/adds">List adds</li></a>
                         <li><a href="/user/adds/create">Create add</li></a>
                         <li><a href="">List users</li></a>

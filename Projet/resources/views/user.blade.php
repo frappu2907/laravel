@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="col" id="dashboard">
-                <h1>Welcome</h1>
+                <h1>Welcome {{ Auth::user()->name }}</h1>
             </div>
         </div>
     </div>

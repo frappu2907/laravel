@@ -1,7 +1,4 @@
-#fixed{
-  position: fixed;
-  width: 100%;
-}
+
 #btn{
   margin-top: 20px;
 }
@@ -33,7 +30,6 @@ body{
 }
 #fullHeight{
   height: 100%;
-  padding-top: 28px;
 }
 #dashboard{
   margin-top: 50px;
