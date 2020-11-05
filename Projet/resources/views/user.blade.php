@@ -15,8 +15,14 @@
                         <li><a href="/user">Home</a></li>
                         <li><a href="/user/adds">List adds</li></a>
                         <li><a href="/user/adds/create">Create add</li></a> 
-                        <li><a href="">List users</li></a>
-                        <li><a href="">Create user</li></a> 
+                        <li><a href="/user/profile/{{Auth::user()->id}}">Update Profile</li></a>
+                        <li>
+                            <form action="/profile/{{Auth::user()->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete Your Account</button>
+                        </form>
+                        </li>
 
                     </ul>
                 </div>
