@@ -1,11 +1,65 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
+#btn{
+  margin-top: 20px;
+}
+#changeWidth{
+  width: 70%;
+  margin-top: 30px;
+}
+html{
+  height: 100%;
+}
+#app{
+  height: 100%;
+}
+.main{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+#side{
+  background-color:#2196F3;
+  border-left: #2196F3 1px solid;
+  height: 100%;
+  color: white;
+  padding: 0px;
+}
+#sidebar{
+  margin-top: 30px;
+}
+#fullHeight{
+  height: 100%;
+}
+#dashboard{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+.listDashboard{
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  margin-left: 25px;
+  justify-content: space-around;
+}
+
+ul li{
+  list-style-type: none;
+}
+li a{
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+  font-weight: bolder;
+  outline: none;
+}
+.title_dashboard{
+  font-size: 25px;
+  margin-left: 10px;
+}
+
 
 :root {
   --blue: #3490dc;
