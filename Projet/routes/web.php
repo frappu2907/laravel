@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/user', function () {
-    return view('user');
-});
+// Route::get('/user', function () {
+//     return view('user');
+// });
 
 //ROUTE SHOW ALL THE PRODUCTS
 Route::get('/user/adds','App\Http\Controllers\AddsController@index')->middleware('auth');
@@ -27,4 +27,4 @@ Route::post('/update','App\Http\Controllers\AddsController@update')->middleware(
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user', [App\Http\Controllers\HomeController::class, 'index'])->name('user');
