@@ -57,7 +57,7 @@ class EmployeurController extends Controller
         $user =User::find($id);
 
         $validate = $request->validate([
-            'password' => 'required|min:7|required_with:password_confirmation',
+            'password' => 'required|min:7|confirmed',
         ]);
 
         if($validate){
