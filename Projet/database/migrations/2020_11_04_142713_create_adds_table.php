@@ -15,6 +15,7 @@ class CreateAddsTable extends Migration
     {
         Schema::create('adds', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->string('title');
             $table->string('compagny_name');
@@ -22,6 +23,7 @@ class CreateAddsTable extends Migration
             $table->string('location');
             $table->string('experience');
             $table->string('email');
+            $table->index('user_id');
         });
     }
 

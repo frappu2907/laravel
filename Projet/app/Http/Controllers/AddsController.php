@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Adds;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AddsController extends Controller
 {
     function store(){
-        $add = new Adds;
-        $add->title = request('title');
-        $add->compagny_name = request('compagny_name');
-        $add->description = request('description');
-        $add->location = request('location');
-        $add->experience = request('experience');
-        $add->email = request('email');
-        $add->save();
+        // $add = new Adds;
+        $data= request(['title','compagny_name','description','location','experience','email']);
+        // $add->title = request('title');
+        // $add->compagny_name = request('compagny_name');
+        // $add->description = request('description');
+        // $add->location = request('location');
+        // $add->experience = request('experience');
+        // $add->email = request('email');
+        auth()->user()->adds()->create($data);
+
         return redirect('/user/adds')->with('msgCreated','New add created');
 
     }

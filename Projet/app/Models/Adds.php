@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adds extends Model 
 {
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
     use HasFactory;
     protected $fillable = [
        'title',
-       'conpagny_name',
+       'compagny_name',
        'description',
        'location',
        'experience',
