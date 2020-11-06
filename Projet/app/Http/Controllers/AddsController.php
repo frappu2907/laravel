@@ -16,7 +16,7 @@ class AddsController extends Controller
         $add->experience = request('experience');
         $add->email = request('email');
         $add->save();
-        return redirect('/user/adds')->with('msg','New add created');
+        return redirect('/user/adds')->with('msgCreated','New add created');
 
     }
 
@@ -37,7 +37,7 @@ class AddsController extends Controller
     function destroy($id){
         $adds = Adds::FindorFail($id);
         $adds->delete();
-        return redirect('/user/adds')->with('msg','Add delete');
+        return redirect('/user/adds')->with('msgDeleted','Add deleted');
     }
     function edit($id){
         $add = Adds::FindorFail($id);
@@ -54,6 +54,6 @@ class AddsController extends Controller
         $add->experience = request('UpdateExperience');
         $add->email = request('UpdateEmail');
         $add->save();
-        return redirect('/user/adds')->with('msg','Add updated');
+        return redirect('/user/adds')->with('msgUpdated','Add updated');
     }
 }

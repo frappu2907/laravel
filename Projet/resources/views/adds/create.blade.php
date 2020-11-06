@@ -2,28 +2,6 @@
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-</head>
 <body>
     <div class="container-fluid p-o" id="fullHeight">
         <div class="row" id="fullHeight">
@@ -93,11 +71,10 @@
                     <div class="col-md-12">
                     <input class="form-control" type="email" name="email">
                     </div>
-                    <div class="col-md-8 offset-md-4">
-                    <input class="btn btn-primary" type="submit" value="Create" name="btn" id="btn">
+                    <div class="col-md-8 offset-5">
+                    <input class="btn btn-primary" type="submit" value="Create add" name="btn" id="btn">
                     </div>
                     </form>
-                    <a href="/user/adds">back to product list</a>
                 </div>
             </div>
         </div>

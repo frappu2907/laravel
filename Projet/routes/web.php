@@ -6,7 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//EMPLYEUR ROUTE//
+//EMPLOYEUR ROUTE//
 
 //ROUTE SHOW ALL THE PRODUCTS
 Route::get('/user/adds','App\Http\Controllers\AddsController@index')->middleware('auth');
@@ -18,14 +18,19 @@ Route::get('/user/adds/{id}','App\Http\Controllers\AddsController@show')->middle
 Route::post('/adds','App\Http\Controllers\AddsController@store')->middleware('auth');
 //ROUTE DELETE
 Route::delete('/adds/{id}','App\Http\Controllers\AddsController@destroy')->middleware('auth');
+
 //ROUTE FORM UPDATE//
 Route::get('/user/adds/edit/{id}','App\Http\Controllers\AddsController@edit')->middleware('auth');
-//ROUTE UPDATE//
 Route::post('/update','App\Http\Controllers\AddsController@update')->middleware('auth');
+
 //ROUTE DASHBOARD USER//
 Route::get('/user', [App\Http\Controllers\HomeController::class, 'index'])->name('user');
+
 //ROUTE TO FORM UPDATE//
-Route::get('/user/profile/{id}','App\Http\Controllers\EmployeurController@show');
+Route::get('/user/profile/{id}','App\Http\Controllers\EmployeurController@edit');
+Route::post('/profile/update','App\Http\Controllers\EmployeurController@update')->middleware('auth');
+
+
 //ROUTE DELETE ACCOUNT EMPLOYEUR//
 Route::delete('/profile/{id}','App\Http\Controllers\EmployeurController@destroy')->middleware('auth');
 

@@ -17,7 +17,13 @@
                         <li><a href="/user/adds">List adds</li></a>
                         <li><a href="/user/adds/create">Create add</li></a> 
                         <li><a href="/user/profile/{{Auth::user()->id}}">Update Profile</li></a>
-                        <li><a href="">Create user</li></a> 
+                        <li>
+                            <form action="/profile/{{Auth::user()->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete Your Account</button>
+                        </form>
+                        </li>
 
                     </ul>
                 </div>
@@ -27,12 +33,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"><h1>Update Profile</h1></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/profile/update">
                         @csrf
-
+                        <input type="hidden" value="{{$infos->id}}">
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -113,10 +119,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
+                            <div class="col-md-6 offset-5">
+                                <button type="submit" class="btn btn-warning">Update profile</button>
                             </div>
                         </div>
                     </form>

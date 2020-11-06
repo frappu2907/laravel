@@ -29,6 +29,13 @@
             <div class="col" id="dashboard">
             <div id="changeWidth">
     <div class="justify-content-center">
+        @if(session('msgCreated'))
+            <div class=" alert alert-success" role="alert" >{{session('msgCreated')}}</div>
+            @elseif(session('msgUpdated'))
+            <div class="alert alert-warning" role="alert">{{session('msgUpdated')}}</div>
+            @elseif(session('msgDeleted'))
+            <div class="alert alert-danger" role="alert">{{session('msgDeleted')}}</div>
+        @endif
         <h1>List of Adds</h1>
     </div>
 <div class="table-responsive">
