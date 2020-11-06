@@ -34,7 +34,8 @@ Route::post('/profile/update','App\Http\Controllers\EmployeurController@update')
 //ROUTE DELETE ACCOUNT EMPLOYEUR//
 Route::delete('/profile/{id}','App\Http\Controllers\EmployeurController@destroy')->middleware('auth');
 
-
+//ROUTE UPDATE PASSWORD EMPLOYEUR//
+Route::post('/update/password','App\Http\Controllers\EmployeurController@updatePassword')->middleware('auth');
 
 
 

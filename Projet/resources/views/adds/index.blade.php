@@ -32,7 +32,7 @@
         @if(session('msgCreated'))
             <div class=" alert alert-success" role="alert" >{{session('msgCreated')}}</div>
             @elseif(session('msgUpdated'))
-            <div class="alert alert-warning" role="alert">{{session('msgUpdated')}}</div>
+            <div class="alert alert-sucess" role="alert">{{session('msgUpdated')}}</div>
             @elseif(session('msgDeleted'))
             <div class="alert alert-danger" role="alert">{{session('msgDeleted')}}</div>
         @endif
