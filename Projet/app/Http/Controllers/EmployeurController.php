@@ -30,7 +30,7 @@ class EmployeurController extends Controller
             $validate = $request->validate([
                 'name' => 'required |min:2',
                 'nickname' =>'required|min:3',
-                'mobile' =>'required|min:10',
+                'mobile' =>'required|min:8',
                 'email' =>'required|email',
             ]);
 

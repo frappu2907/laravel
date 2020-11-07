@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -55,8 +57,12 @@ class AdminController extends Controller
     }
 
     public function edit($id){
-        $user =User::findOrFail($id);
-        return view('admin.edit', ['user' => $user ]);
+        if(Auth::user()->id == $id){
+            return redirect()->back()->with('warning',"Not allowed to edit this user");
+        }else{
+            $user =User::findOrFail($id);
+            return view('admin.edit', ['user' => $user ]);
+        }
     }
 
     public function update(Request $request){
@@ -68,7 +74,7 @@ class AdminController extends Controller
             $validate = $request->validate([
                 'name' => 'required |min:2',
                 'nickname' =>'required|min:3',
-                'mobile' =>'required|min:10',
+                'mobile' =>'required|min:8',
                 'email' =>'required|email',
             ]);
 
@@ -76,7 +82,7 @@ class AdminController extends Controller
                 $validate = $request->validate([
                     'name' => 'required|min:2',
                     'nickname' =>'required|min:3',
-                    'mobile' =>'required|min:10',
+                    'mobile' =>'required|min:8',
                     'email' =>'required|unique:users',
                 ]);
             }

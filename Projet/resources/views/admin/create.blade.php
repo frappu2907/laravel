@@ -11,6 +11,7 @@
                         <h5 class="title_dashboard">Dashboard Admin</h5>
                     </div>
                     <ul class="listDashboard">
+                        <li><a href="/">CraigList</li></a>
                         <li><a href="/admin">List user</li></a>
                         <li><a href="/admin/user/create">Create User</li></a> 
                         </ul>

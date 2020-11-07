@@ -21,11 +21,8 @@ class AddsController extends Controller
     }
 
     function index(){
-
         $adds = Adds::latest()->get();
         return view('adds.index',['adds' =>$adds]);
-        // $add =Adds::find(1)->user;
-        // dd($add);
     }
 
     function show ($id){

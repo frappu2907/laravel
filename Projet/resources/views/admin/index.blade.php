@@ -26,6 +26,8 @@
             <div class="alert alert-sucess" role="alert">{{session('msgAdminUpdated')}}</div>
             @elseif(session('msgAdminDeleted'))
             <div class="alert alert-danger" role="alert">{{session('msgAdminDeleted')}}</div>
+            @elseif(session('warning'))
+            <div class="alert alert-warning" role="alert">{{session('warning')}}</div>
         @endif
         <h1>List of Users</h1>
     </div>
@@ -41,7 +43,6 @@
                 <th scope=>Role</th>
                 <th scope="col">Update User</th>
                 <th scope="col">Delete User</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -52,7 +53,13 @@
                 <td scope="row">{{$user->nickname}}</td>
                 <td scope="row">{{$user->email}}</td>
                 <td scope="row">{{$user->mobile}}</td>
-                <td scope ="row">{{$user->is_admin}}</td>
+                <td scope ="row">
+                @if($user->is_admin == 1)
+                <strong>Admin</strong>
+                @else
+                <strong>User</strong>
+                @endif
+                </td>
                 <td scope="row"><form action="/admin/user/edit/{{$user->id}}" action="POST">@csrf<button class="btn btn-warning">Update</button></form></td>
                 <td scope="row"><form action="/admin/user/{{$user->id}}" method="POST">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form></td>
             </tr>

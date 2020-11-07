@@ -30,3 +30,8 @@ class RedirectIfAuthenticated
         return $next($request);
     }
 }
+
+
+// elseif(Auth::guard($guard)-> check() && Auth::user()->is_admin === 1){
+//     return redirect(RouteServiceProvider::ADMIN);
+// }
