@@ -11,10 +11,9 @@
                         <h5 class="title_dashboard">Dashboard Admin</h5>
                     </div>
                     <ul class="listDashboard">
-                        <li><a href="/user">Home</a></li>
-                        <li><a href="/admin">List User</li></a>
+                        <li><a href="/">CraigList</li></a>
+                        <li><a href="/admin">List Users</li></a>
                         <li><a href="/admin/user/create">Create New User</li></a> 
-                        <li><a href=""></li></a>
                     </ul>
                 </div>
             </div>
@@ -28,7 +27,7 @@
             @elseif(session('msgAdminDeleted'))
             <div class="alert alert-danger" role="alert">{{session('msgAdminDeleted')}}</div>
         @endif
-        <h1>List of User</h1>
+        <h1>List of Users</h1>
     </div>
 <div class="table-responsive">
     <table class="table table-hover">
@@ -39,6 +38,7 @@
                 <th scope="col">Nickname</th>
                 <th scope="col">Email</th>
                 <th scope="col">Mobile</th>
+                <th scope=>Role</th>
                 <th scope="col">Update User</th>
                 <th scope="col">Delete User</th>
                 <th></th>
@@ -52,7 +52,8 @@
                 <td scope="row">{{$user->nickname}}</td>
                 <td scope="row">{{$user->email}}</td>
                 <td scope="row">{{$user->mobile}}</td>
-                <td scope="row"><form action="/admin/user/update/{{$user->id}}" action="POST">@csrf<button class="btn btn-warning">Update</button></form></td>
+                <td scope ="row">{{$user->is_admin}}</td>
+                <td scope="row"><form action="/admin/user/edit/{{$user->id}}" action="POST">@csrf<button class="btn btn-warning">Update</button></form></td>
                 <td scope="row"><form action="/admin/user/{{$user->id}}" method="POST">@csrf @method('DELETE')<button class="btn btn-danger">Delete</button></form></td>
             </tr>
             @endforeach

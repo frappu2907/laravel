@@ -26,6 +26,9 @@ Route::get('/admin','App\Http\Controllers\AdminController@index');
 Route::delete('/admin/user/{id}','App\Http\Controllers\AdminController@destroy');
 Route::get('/admin/user/create','App\Http\Controllers\AdminController@create');
 Route::post('/admin/user','App\Http\Controllers\AdminController@store');
+Route::get('/admin/user/edit/{id}','App\Http\Controllers\AdminController@edit');
+Route::post('/admin/user/update','App\Http\Controllers\AdminController@update');
+Route::post('/admin/user/update/password', 'App\Http\Controllers\AdminController@updatePassword');
 
 Auth::routes();
 

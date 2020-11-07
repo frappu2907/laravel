@@ -10,16 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class AddsController extends Controller
 {
     function store(){
-        // $add = new Adds;
         $data= request(['title','compagny_name','description','location','experience','email']);
-        // $add->title = request('title');
-        // $add->compagny_name = request('compagny_name');
-        // $add->description = request('description');
-        // $add->location = request('location');
-        // $add->experience = request('experience');
-        // $add->email = request('email');
         auth()->user()->adds()->create($data);
-
         return redirect('/user/adds')->with('msgCreated','New add created');
 
     }
@@ -29,8 +21,11 @@ class AddsController extends Controller
     }
 
     function index(){
+
         $adds = Adds::latest()->get();
         return view('adds.index',['adds' =>$adds]);
+        // $add =Adds::find(1)->user;
+        // dd($add);
     }
 
     function show ($id){

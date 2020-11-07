@@ -35,21 +35,79 @@ class AdminController extends Controller
             'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
 
-        $user->name =$request['name'];
-        $user->email =$request['email'];
-        $user->nickname =$request['nickname'];
-        $user->mobile =$request['mobile'];
-        $user->mobile = $request['mobile'];
-
         if($validate){
             $user->name =$request['name'];
             $user->email =$request['email'];
             $user->nickname =$request['nickname'];
             $user->mobile =$request['mobile'];
             $user->password=Hash::make($request['password']);
+            if(!isset($request['isadmin'])){
+                $user->is_admin =0;
+            }else{
+                $user->is_admin=$request['isadmin'];
+            }
+
+
 
             $user->save();
             return redirect('/admin')->with('msgAdminCreated','User Created');
+        }
+    }
+
+    public function edit($id){
+        $user =User::findOrFail($id);
+        return view('admin.edit', ['user' => $user ]);
+    }
+
+    public function update(Request $request){
+        $id =request('id');
+        $user=User::find($id);
+
+            if($user->email === $request['email']){
+            //validate input//
+            $validate = $request->validate([
+                'name' => 'required |min:2',
+                'nickname' =>'required|min:3',
+                'mobile' =>'required|min:10',
+                'email' =>'required|email',
+            ]);
+
+            }else{
+                $validate = $request->validate([
+                    'name' => 'required|min:2',
+                    'nickname' =>'required|min:3',
+                    'mobile' =>'required|min:10',
+                    'email' =>'required|unique:users',
+                ]);
+            }
+
+            $user->name =$request['name'];
+            $user->nickname =$request['nickname'];
+            $user->mobile =$request['mobile'];
+            $user->email =$request['email'];
+            if(!isset($request['isadmin'])){
+                $user->is_admin =0;
+            }else{
+                $user->is_admin=$request['isadmin'];
+            }
+
+
+            $user->save();
+            return redirect()->back()->with('msgAdminUpdated','Profile updated');
+    }
+
+       public function updatePassword(Request $request){
+        $id =request('id');
+        $user =User::find($id);
+
+        $validate = $request->validate([
+            'password' => 'required|min:7|confirmed',
+        ]);
+
+        if($validate){
+            $user->password=Hash::make($request['password']);
+            $user->save();
+            return redirect()->back()->with('msgAdminPasswordUpdated','Password updated');  
         }
     }
 }
