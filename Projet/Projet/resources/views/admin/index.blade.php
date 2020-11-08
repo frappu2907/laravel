@@ -14,6 +14,8 @@
                         <li><a href="/">CraigList</li></a>
                         <li><a href="/admin">List Users</li></a>
                         <li><a href="/admin/user/create">Create New User</li></a> 
+                        <li><a href="/admin/ads">List all the ads</li></a> 
+                        <li><a href="/admin/create/ad">Create Ad</li></a> 
                     </ul>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Adds;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -115,5 +116,48 @@ class AdminController extends Controller
             $user->save();
             return redirect()->back()->with('msgAdminPasswordUpdated','Password updated');  
         }
+    }
+
+    public function indexAds(){
+        $ads = Adds::latest()->get();
+        return view('admin.ads.index',['ads'=> $ads]);
+    }
+
+    public function showAds($id){
+        $ad =Adds::findOrFail($id);
+        return view('admin.ads.show', ['ad' => $ad ]);
+    }
+
+    public function destroyAd($id){
+        $ad = Adds::FindorFail($id);
+        $ad->delete();
+        return redirect('/admin/ads')->with('msgAdminDeletedAd','Ad deleted');
+    }
+
+    public function createAd(){
+        return view('admin.ads.create');
+    }
+
+    public function storeAd(){
+        $data= request(['title','compagny_name','description','location','experience','email']);
+        auth()->user()->adds()->create($data);
+        return redirect('/admin/ads')->with('msgAdminCreateAd','New add created');
+    }
+
+    public function editAd($id){
+        $ad =Adds::findOrFail($id);
+        return view('admin.ads.edit', ['ad' => $ad ]);
+    }
+
+    public function updateAd(){
+        $add = Adds::FindorFail(request('id'));
+        $add->title = request('UpdateTitle');
+        $add->compagny_name = request('UpdateCompagny_name');
+        $add->description = request('UpdateDescription');
+        $add->location = request('UpdateLocation');
+        $add->experience = request('UpdateExperience');
+        $add->email = request('UpdateEmail');
+        $add->save();
+        return redirect('/admin/ads')->with('msgAdminUpdated','Ad updated');
     }
 }

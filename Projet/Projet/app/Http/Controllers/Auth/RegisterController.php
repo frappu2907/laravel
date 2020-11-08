@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Mail\NewUserWelcomeMail;
+use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
@@ -69,7 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'nickname' => $data['nickname'],
@@ -78,8 +78,8 @@ class RegisterController extends Controller
             // add the attributes here so they could be store in the DB and then go to USER model
         ]);
 
-        // Mail::to($data['email'])->send(new NewUserWelcomeMail($user));
+        Mail::to($user->email)->send(new WelcomeMail());
 
-        // return $user;
+        return $user;
     }
 }

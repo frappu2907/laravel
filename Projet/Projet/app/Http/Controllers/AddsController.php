@@ -21,9 +21,11 @@ class AddsController extends Controller
     }
 
     function index(){
-        $adds = Adds::latest()->get();
+        $id = Auth::user()->id;
+        $adds = Adds::WHERE('user_id',$id)->get();
         return view('adds.index',['adds' =>$adds]);
     }
+
 
     function show ($id){
         $add =Adds::findOrFail($id);

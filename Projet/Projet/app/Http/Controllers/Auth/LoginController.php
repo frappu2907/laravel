@@ -35,6 +35,14 @@ class LoginController extends Controller
      *
      * @return void
      */
+    protected function authenticated($request, $user)
+    {
+        if($user->is_admin == 1) {
+            return redirect()->intended('/admin');
+    }
+        return redirect()->intended('/user');
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
